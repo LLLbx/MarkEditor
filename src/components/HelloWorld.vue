@@ -1,7 +1,8 @@
 <script setup  lang="ts">
-import { ref } from 'vue';
+import { ref,inject } from 'vue';
 import Button from './Button'
 import Input from './input'
+
 
 // export default {
 //   setup() {
@@ -48,6 +49,9 @@ const _props = {
   name:'ekko',
   age:123
 }
+
+
+
 </script>
 
 <template>

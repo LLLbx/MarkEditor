@@ -1,15 +1,34 @@
-import {defineProps,FunctionalComponent, render} from 'vue'
+import {
+  defineProps,
+  FunctionalComponent,
+  renderSlot,
+  defineComponent,
+} from "vue";
+import type { SetupContext } from "vue";
 type Props = {
-  name:string,
-  age:number
-}
+  name: string;
+  age: number;
+};
 
-const Index:FunctionalComponent<Props> = (props: Props) => {
-  console.log(props);
+// const Index:FunctionalComponent<Props> = (props: Props,{slots}:SetupContext) => {
+//   console.log(props);
 
-  return(
-    <button>{props.name}</button>
-  )
-}
+//   return(
+//     <button>
+//       {{
+//         renderSlot(slots)
+//       }}
+//     </button>
+//   )
+// }
 
-export default Index
+export default defineComponent({
+  setup(props: Readonly<any>, { slots }: SetupContext) {
+    return () => (
+      <div>
+        <button>{renderSlot(slots, "default")}</button>
+        {slots?.two? <button>{slots.two?.()}</button> : null}
+      </div>
+    );
+  },
+});

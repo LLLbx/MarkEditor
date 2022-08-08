@@ -4,13 +4,11 @@ import App from './App.vue'
 import route from './router'
 import { createPinia } from 'pinia' 
 import piniaPersist from 'pinia-plugin-persist'
+import myPlu from '@/plugins/test'
 
 const pinia = createPinia()
 pinia.use(piniaPersist)
 
-console.log(piniaPersist);
 
-createApp(App).use(route).use(pinia).mount('#app')
-
-console.log(App);
+createApp(App).use(route).use(pinia).use(myPlu).mount('#app')
 
